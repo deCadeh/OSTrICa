@@ -1,4 +1,4 @@
-#-------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
 # Name:        	OSTrICa - Open Source Threat Intelligence Collector
 #               DomainBigData plugin
 #
@@ -86,12 +86,47 @@ class DomainBigData:
                 else:
                     return False
 
+
     def collect_email_intelligence(self, server_response):
         soup = BeautifulSoup(server_response, 'html.parser')
         associated_sites = soup.findAll('table', {'class':'t1'})
+        associated_persons = soup.findAll('table', {'class':'websiteglobalstats em-td2 trhov'})
 
         if len(associated_sites) == 1:
             self.extract_associated_sites(associated_sites[0].tbody)
+        self.extract_associated_persons(associated_persons[0])
+
+# CHANGE HERE
+    def extract_associated_persons(self, soup):
+        associated_persons = []
+        idx = 0
+        related_persons = soup.findAll('tr')
+        for person in related_persons:
+            if (idx == 0):
+                registrant_name = person.findAll('td')[1].get_text()
+            elif (idx == 1):
+                registrant_organization = person.findAll('td')[1].get_text()
+                associated_domains = person.find('a', href=True)['href']
+            elif (idx == 2):
+                registrant_address = person.findAll('td')[1].get_text()
+            elif (idx == 3):
+                registrant_city = person.findAll('td')[1].get_text()
+            elif (idx == 4):
+                registrant_state = person.findAll('td')[1].get_text()
+            elif (idx == 5):
+                registrant_country = person.findAll('td')[1].get_text().strip()
+            elif (idx == 6):
+                registrant_tel = person.findAll('td')[1].get_text()
+            elif (idx == 7):
+                registrant_fax = person.findAll('td')[1].get_text()
+            elif (idx == 8):
+                registrant_private = person.findAll('td')[1].get_text()
+                idx = 0
+                associated_persons.append({'registrant_name':registrant_name, 'registrant_organization':registrant_organization, 'associated_domains':associated_domains, 'registrant_address':registrant_address, 'registrant_city':registrant_city, 'registrant_state':registrant_state, 'registrant_country':registrant_country, 'registrant_tel':registrant_tel, 'registrant_fax':registrant_fax, 'registrant_private':registrant_private})
+                continue
+            idx += 1
+            self.intelligence['associated_persons'] = associated_persons
+#UNTIL HERE
 
     def extract_associated_sites(self, soup):
         associated_sites = []

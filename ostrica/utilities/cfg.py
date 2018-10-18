@@ -4,7 +4,7 @@
 # Purpose:	Collection and visualization of Threat Intelligence data
 #
 # Author:      	Roberto Sponchioni - <rsponchioni@yahoo.it> @Ptr32Void
-#               Jason Hong - <honjason@shericancollege.ca>
+#               Jason Hong - <honjason@sheridancollege.ca> @deCade
 #
 # Created:     	20/12/2015
 # Licence:     	This file is part of OSTrICa.
@@ -44,6 +44,7 @@ class Config(object):
     intelligence_type['md5'] = 'md5'
     intelligence_type['sha256'] = 'sha256'
     intelligence_type['ip'] = 'ip_information'
+    # intelligence_type['person'] = 'person_information'
 
     threat_crowd_limit = True
     threat_crowd_limit_seconds = 10

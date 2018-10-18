@@ -44,8 +44,8 @@ class BlackListChecker:
     alienvault_host = 'reputation.alienvault.com'
     tor_nodes_host =  'torstatus.blutmagie.de'
     blocklist_de = 'lists.blocklist.de'
-    # dragon_research = 'dragonresearchgroup.org' -- DEAD
-    # bambenekconsulting = 'osint.bambenekconsulting.com' -- NOTHING
+    dragon_research = 'dragonresearchgroup.org'
+    bambenekconsulting = 'osint.bambenekconsulting.com'
 
     def __init__(self):
         self.intelligence = {}
@@ -63,13 +63,13 @@ class BlackListChecker:
         self.intelligence['alienvault'] = self.alienvault()
         self.intelligence['tor_exit_nodes'] = self.tor_exit_nodes()
         self.intelligence['de_blocklist'] = self.de_blocklist()
-        # self.intelligence['dragon_research'] = self.dragon_research_bl()
-        # self.intelligence['bambenekconsulting'] = self.bambenekconsulting_feed()
+        self.intelligence['dragon_research'] = self.dragon_research_bl()
+        self.intelligence['bambenekconsulting'] = self.bambenekconsulting_feed()
 
 
     def emerging_threats(self):
         query = '/blockrules/compromised-ips.txt'
-        hhandle = httplib.HTTPSConnection(self.emerging_threats_host, timeout=cfg.timeout)
+        hhandle = httplib.HTTPConnection(self.emerging_threats_host, timeout=cfg.timeout)
         hhandle.putrequest('GET', query)
         hhandle.putheader('Connection', 'keep-alive')
         hhandle.putheader('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8')
@@ -94,7 +94,7 @@ class BlackListChecker:
 
     def alienvault(self):
         query = '/reputation.data'
-        hhandle = httplib.HTTPSConnection(self.alienvault_host, timeout=cfg.timeout)
+        hhandle = httplib.HTTPConnection(self.alienvault_host, timeout=cfg.timeout)
         hhandle.putrequest('GET', query)
         hhandle.putheader('Connection', 'keep-alive')
         hhandle.putheader('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8')
@@ -119,7 +119,7 @@ class BlackListChecker:
 
     def tor_exit_nodes(self):
         query = '/ip_list_exit.php/Tor_ip_list_EXIT.csv'
-        hhandle = httplib.HTTPSConnection(self.tor_nodes_host, timeout=cfg.timeout)
+        hhandle = httplib.HTTPConnection(self.tor_nodes_host, timeout=cfg.timeout)
         hhandle.putrequest('GET', query)
         hhandle.putheader('Connection', 'keep-alive')
         hhandle.putheader('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8')
@@ -144,7 +144,7 @@ class BlackListChecker:
 
     def de_blocklist(self):
         query = '/lists/all.txt'
-        hhandle = httplib.HTTPSConnection(self.blocklist_de, timeout=cfg.timeout)
+        hhandle = httplib.HTTPConnection(self.blocklist_de, timeout=cfg.timeout)
         hhandle.putrequest('GET', query)
         hhandle.putheader('Connection', 'keep-alive')
         hhandle.putheader('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8')
@@ -169,7 +169,7 @@ class BlackListChecker:
 
     def dragon_research_bl(self):
         query = '/insight/sshpwauth.txt'
-        hhandle = httplib.HTTPSConnection(self.blocklist_de, timeout=cfg.timeout)
+        hhandle = httplib.HTTPConnection(self.blocklist_de, timeout=cfg.timeout)
         hhandle.putrequest('GET', query)
         hhandle.putheader('Connection', 'keep-alive')
         hhandle.putheader('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8')
@@ -194,7 +194,7 @@ class BlackListChecker:
 
     def bambenekconsulting_feed(self):
         query = '/feeds/c2-masterlist.txt'
-        hhandle = httplib.HTTPSConnection(self.bambenekconsulting, timeout=cfg.timeout)
+        hhandle = httplib.HTTPConnection(self.bambenekconsulting, timeout=cfg.timeout)
         hhandle.putrequest('GET', query)
         hhandle.putheader('Connection', 'keep-alive')
         hhandle.putheader('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8')
