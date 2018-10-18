@@ -3,6 +3,7 @@
 # Purpose:		Collection and visualization of Threat Intelligence data
 #
 # Author:      	Roberto Sponchioni - <rsponchioni@yahoo.it> @Ptr32Void
+#               deCade
 #
 # Created:     	20/12/2015
 # Licence:     	This file is part of OSTrICa.
