@@ -5,8 +5,7 @@ OSTrICa - Open Source Threat Intelligence Collector (An Open Source plugin-orien
 ## Latest Changes
 **October 18th, 2018 @ 6:10PM**
 - Removed unavailable plugins
-- Added functionality to extract information about possible associated individuals from DomainBigData
--- Tested - Appears to function correctly
+- Added functionality to extract information about possible associated individuals from DomainBigData (appears to function correctly so far)
 
 **October 18th, 2018 @ 1:40PM**
 - Deepviz plugin removed
