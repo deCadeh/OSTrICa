@@ -3,6 +3,7 @@ OSTrICa - Open Source Threat Intelligence Collector (An Open Source plugin-orien
 ![OSTrICa Graph]( https://github.com/Ptr32Void/OSTrICa/blob/master/docs/OSTrICaLogo.png "OSTrICa Graph" )
 
 **Latest Changes**
+October 18th, 2018 @ 1:40PM
 - Deepviz plugin removed
 - DomainBigData plugin updated (redirect)
 
