@@ -8,7 +8,7 @@ OSTrICa - Open Source Threat Intelligence Collector (An Open Source plugin-orien
 - Added functionality to extract information about possible associated individuals from DomainBigData (appears to function correctly so far)
 
 **October 18th, 2018 @ 1:40PM**
-- Deepviz plugin removed
+- Deepviz plugin removed (unavailable now)
 - DomainBigData plugin updated (redirect)
 
 ## Info
@@ -60,7 +60,7 @@ write "help" for help
 > help
 Following options are available
 
-        domain - used to collect domains information
+        domain - used to collect domain information
         Example: domain=google.com or domain=google.com,yahoo.com
         ip - used to collect IP information
         Example: ip=8.8.8.8 or ip=8.8.8.8,173.194.68.99
@@ -72,7 +72,7 @@ Following options are available
         cola_graph - generate a graph based on all the information collected where nodes do not overlap (it might take a while to generate the graph if there are lots of nodes)
         gclean - clear graph information
         show - show all information that will be collected
-        run - extract intelligece information
+        run - extract intelligence information
         help - this help
         plugins - show available plugins
 ```
@@ -133,7 +133,7 @@ The following list contains the currently available plugins:
 Plugins are stored in the directory named `Plugins`. 
 To create a new Plugin you need to create a new subdirectory under `Plugins` and within that new directory a new `__init__.py` should be added.
 
-OSTrICa will call 2 functions within each plugins `run` and `data_visualization`, defined as follow:
+OSTrICa will call 2 functions within each plugins `run` and `data_visualization`, defined as follows:
 ```python
 # intelligence is the IoC provided (eg.: something@yahoo.com)
 # extraction_type is the typology (eg.: an MD5 or email, etc)
