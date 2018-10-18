@@ -147,31 +147,26 @@ class DomainBigData:
 
 
     def domain_information(self, domain):
-        flag = False
-        while True:
-            if (flag is False):
-                query = '/%s' % (domain)
-                flag = True
-            else:
-                query = response.getheader('Location')
-            hhandle = httplib.HTTPSConnection(self.host, timeout=cfg.timeout)
-            hhandle.putrequest('GET', query)
-            hhandle.putheader('Connection', 'keep-alive')
-            hhandle.putheader('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8')
-            hhandle.putheader('Accept-Encoding', 'gzip, deflate, sdch')
-            hhandle.putheader('User-Agent', cfg.user_agent)
-            hhandle.putheader('Accept-Language', 'en-GB,en-US;q=0.8,en;q=0.6')
-            hhandle.endheaders()
+        query = '/%s' % (domain)
+        hhandle = httplib.HTTPSConnection(self.host, timeout=cfg.timeout)
+        hhandle.putrequest('GET', query)
+        hhandle.putheader('Connection', 'keep-alive')
+        hhandle.putheader('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8')
+        hhandle.putheader('Accept-Encoding', 'gzip, deflate, sdch')
+        hhandle.putheader('User-Agent', cfg.user_agent)
+        hhandle.putheader('Accept-Language', 'en-GB,en-US;q=0.8,en;q=0.6')
+        hhandle.endheaders()
 
-            response = hhandle.getresponse()
-            if (response.status == 200):
-                if response.getheader('Content-Encoding') == 'gzip':
-                    content = StringIO.StringIO(response.read())
-                    server_response = gzip.GzipFile(fileobj=content).read()
-                    self.collect_domain_intelligence(server_response)
-                    return True
-                else:
-                    return False
+        response = hhandle.getresponse()
+        if (response.status == 200):
+            if response.getheader('Content-Encoding') == 'gzip':
+                content = StringIO.StringIO(response.read())
+                server_response = gzip.GzipFile(fileobj=content).read()
+                self.collect_domain_intelligence(server_response)
+                return True
+            else:
+                return False
+        else:   return False
 
 
     def collect_domain_intelligence(self, server_response):
