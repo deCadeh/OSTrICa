@@ -118,7 +118,7 @@ The following list contains the currently available plugins:
 * `ThreatCrowd` - Developer `Ptr32Void`
 * `BlackLists` - Developer `Ptr32Void`
 * `CymruWhois` - Developer `Ptr32Void`
-* `DomainBigData` - Developer `Ptr32Void`
+* `DomainBigData` - Developer `Ptr32Void` `deCadeh`
 * `NortonSafeWeb` - Developer `Ptr32Void`
 * `PyWhois` - Developer `Ptr32Void`
 * `SafeBrowsing` - Developer `Ptr32Void`
