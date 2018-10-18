@@ -41,8 +41,6 @@ developer = 'Roberto Sponchioni <rsponchioni@yahoo.it>'
 description = 'Plugin used to collect information about domains or emails on DomainBigData'
 visual_data = True
 
-flag = False
-
 class DomainBigData:
 
     host = "domainbigdata.com"
@@ -95,8 +93,8 @@ class DomainBigData:
         if len(associated_sites) == 1:
             self.extract_associated_sites(associated_sites[0].tbody)
         self.extract_associated_persons(associated_persons[0])
+        
 
-# CHANGE HERE
     def extract_associated_persons(self, soup):
         associated_persons = []
         idx = 0
@@ -126,7 +124,6 @@ class DomainBigData:
                 continue
             idx += 1
             self.intelligence['associated_persons'] = associated_persons
-#UNTIL HERE
 
     def extract_associated_sites(self, soup):
         associated_sites = []
@@ -150,27 +147,32 @@ class DomainBigData:
 
 
     def domain_information(self, domain):
-        query = '/%s' % (domain)
-        hhandle = httplib.HTTPConnection(self.host, timeout=cfg.timeout)
-        hhandle.putrequest('GET', query)
-        hhandle.putheader('Connection', 'keep-alive')
-        hhandle.putheader('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8')
-        hhandle.putheader('Accept-Encoding', 'gzip, deflate, sdch')
-        hhandle.putheader('User-Agent', cfg.user_agent)
-        hhandle.putheader('Accept-Language', 'en-GB,en-US;q=0.8,en;q=0.6')
-        hhandle.endheaders()
-
-        response = hhandle.getresponse()
-        if (response.status == 200):
-            if response.getheader('Content-Encoding') == 'gzip':
-                content = StringIO.StringIO(response.read())
-                server_response = gzip.GzipFile(fileobj=content).read()
-                self.collect_domain_intelligence(server_response)
-                return True
+        flag = False
+        while True:
+            if (flag is False):
+                query = '/%s' % (domain)
+                flag = True
             else:
-                return False
-        else:
-            return False
+                query = response.getheader('Location')
+            hhandle = httplib.HTTPSConnection(self.host, timeout=cfg.timeout)
+            hhandle.putrequest('GET', query)
+            hhandle.putheader('Connection', 'keep-alive')
+            hhandle.putheader('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8')
+            hhandle.putheader('Accept-Encoding', 'gzip, deflate, sdch')
+            hhandle.putheader('User-Agent', cfg.user_agent)
+            hhandle.putheader('Accept-Language', 'en-GB,en-US;q=0.8,en;q=0.6')
+            hhandle.endheaders()
+
+            response = hhandle.getresponse()
+            if (response.status == 200):
+                if response.getheader('Content-Encoding') == 'gzip':
+                    content = StringIO.StringIO(response.read())
+                    server_response = gzip.GzipFile(fileobj=content).read()
+                    self.collect_domain_intelligence(server_response)
+                    return True
+                else:
+                    return False
+
 
     def collect_domain_intelligence(self, server_response):
         soup = BeautifulSoup(server_response, 'html.parser')
@@ -270,6 +272,7 @@ class DomainBigData:
         self.intelligence_list.append(record_list)
 
 
+# THIS HAS TO BE CHANGED
     def related_domains_information(self, domain):
         query = '/name/%s' % (domain)
         hhandle = httplib.HTTPConnection(self.host, timeout=cfg.timeout)
