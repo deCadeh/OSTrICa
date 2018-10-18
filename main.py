@@ -183,6 +183,7 @@ class OstricaConsole:
 def main():
     print '%s v.%s - %s' % (cfg.tool_name, cfg.version, cfg.tool_description)
     print 'Developed by: %s <%s>' % (cfg.developer, cfg.developer_email)
+    print 'Revised by: %s <%s>' % (cfg.developer2, cfg.developer2_email)
     print 'write "help" for help'
 
     ostrica_console = OstricaConsole()

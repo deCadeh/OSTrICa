@@ -1,24 +1,26 @@
 #-------------------------------------------------------------------------------
 # Name:        	OSTrICa - Open Source Threat Intelligence Collector
-# Purpose:		Collection and visualization of Threat Intelligence data
+#
+# Purpose:	Collection and visualization of Threat Intelligence data
 #
 # Author:      	Roberto Sponchioni - <rsponchioni@yahoo.it> @Ptr32Void
+#               Jason Hong - <honjason@shericancollege.ca>
 #
 # Created:     	20/12/2015
 # Licence:     	This file is part of OSTrICa.
 #
-#				OSTrICa is free software: you can redistribute it and/or modify
-#				it under the terms of the GNU General Public License as published by
-#				the Free Software Foundation, either version 3 of the License, or
-#				(at your option) any later version.
+#	OSTrICa is free software: you can redistribute it and/or modify
+#	it under the terms of the GNU General Public License as published by
+#	the Free Software Foundation, either version 3 of the License, or
+#	(at your option) any later version.
 #
-#				OSTrICa is distributed in the hope that it will be useful,
-#				but WITHOUT ANY WARRANTY; without even the implied warranty of
-#				MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-#				GNU General Public License for more details.
+#	OSTrICa is distributed in the hope that it will be useful,
+#	but WITHOUT ANY WARRANTY; without even the implied warranty of
+#	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+#	GNU General Public License for more details.
 #
-#				You should have received a copy of the GNU General Public License
-#				along with OSTrICa. If not, see <http://www.gnu.org/licenses/>.
+#	You should have received a copy of the GNU General Public License
+#	along with OSTrICa. If not, see <http://www.gnu.org/licenses/>.
 #-------------------------------------------------------------------------------
 
 class Config(object):
@@ -31,6 +33,8 @@ class Config(object):
     version = '0.5'
     developer = 'Roberto Sponchioni - @Ptr32Void'
     developer_email = 'rsponchioni@yahoo.it'
+    developer2 = 'deCade'
+    developer2_email = 'None'
     user_agent = 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.93 Safari/537.36'
 
     intelligence_type = {}
@@ -41,7 +45,6 @@ class Config(object):
     intelligence_type['sha256'] = 'sha256'
     intelligence_type['ip'] = 'ip_information'
 
-    deep_viz_api = 'YOUR_KEY_HERE'
     threat_crowd_limit = True
     threat_crowd_limit_seconds = 10
     threat_miner_limit = True

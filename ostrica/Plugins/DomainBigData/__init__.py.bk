@@ -1,27 +1,24 @@
 #-------------------------------------------------------------------------------
-# Name:        	OSTrICa - Open Source Threat Intelligence Collector
-#               DomainBigData plugin
-#
-# Purpose:	Collection and visualization of Threat Intelligence data
+# Name:        	OSTrICa - Open Source Threat Intelligence Collector - DomainBigData plugin
+# Purpose:		Collection and visualization of Threat Intelligence data
 #
 # Author:      	Roberto Sponchioni - <rsponchioni@yahoo.it> @Ptr32Void
-#               deCade
 #
 # Created:     	20/12/2015
 # Licence:     	This file is part of OSTrICa.
 #
-#	OSTrICa is free software: you can redistribute it and/or modify
-#	it under the terms of the GNU General Public License as published by
-#	the Free Software Foundation, either version 3 of the License, or
-#	(at your option) any later version.
+#				OSTrICa is free software: you can redistribute it and/or modify
+#				it under the terms of the GNU General Public License as published by
+#				the Free Software Foundation, either version 3 of the License, or
+#				(at your option) any later version.
 #
-#	OSTrICa is distributed in the hope that it will be useful,
-#	but WITHOUT ANY WARRANTY; without even the implied warranty of
-#	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-#	GNU General Public License for more details.
+#				OSTrICa is distributed in the hope that it will be useful,
+#				but WITHOUT ANY WARRANTY; without even the implied warranty of
+#				MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+#				GNU General Public License for more details.
 #
-#	You should have received a copy of the GNU General Public License
-#	along with OSTrICa. If not, see <http://www.gnu.org/licenses/>.
+#				You should have received a copy of the GNU General Public License
+#				along with OSTrICa. If not, see <http://www.gnu.org/licenses/>.
 #-------------------------------------------------------------------------------
 import sys
 import httplib
@@ -41,8 +38,6 @@ developer = 'Roberto Sponchioni <rsponchioni@yahoo.it>'
 description = 'Plugin used to collect information about domains or emails on DomainBigData'
 visual_data = True
 
-flag = False
-
 class DomainBigData:
 
     host = "domainbigdata.com"
@@ -59,32 +54,27 @@ class DomainBigData:
         self.intelligence = {}
 
     def email_information(self, email):
-        flag = False
-        while True: 
-            if (flag is False):
-                query = '/email/%s' % (email)
-                flag = True
+        query = '/email/%s' % (email)
+        hhandle = httplib.HTTPConnection(self.host, timeout=cfg.timeout)
+        hhandle.putrequest('GET', query)
+        hhandle.putheader('Connection', 'keep-alive')
+        hhandle.putheader('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8')
+        hhandle.putheader('Accept-Encoding', 'gzip, deflate, sdch')
+        hhandle.putheader('User-Agent', cfg.user_agent)
+        hhandle.putheader('Accept-Language', 'en-GB,en-US;q=0.8,en;q=0.6')
+        hhandle.endheaders()
+
+        response = hhandle.getresponse()
+        if (response.status == 200):
+            if response.getheader('Content-Encoding') == 'gzip':
+                content = StringIO.StringIO(response.read())
+                server_response = gzip.GzipFile(fileobj=content).read()
+                self.collect_email_intelligence(server_response)
+                return True
             else:
-                query = response.getheader('Location')
-            hhandle = httplib.HTTPSConnection(self.host, timeout=cfg.timeout)
-            hhandle.putrequest('GET', query)
-            hhandle.putheader('Connection', 'keep-alive')
-            hhandle.putheader('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8')
-            hhandle.putheader('Accept-Encoding', 'gzip, deflate, sdch')
-            hhandle.putheader('User-Agent', cfg.user_agent)
-            hhandle.putheader('Accept-Language', 'en-GB,en-US;q=0.8,en;q=0.6')
-            hhandle.endheaders()
-
-            response = hhandle.getresponse()
-
-            if (response.status == 200):
-                if response.getheader('Content-Encoding') == 'gzip':
-                    content = StringIO.StringIO(response.read())
-                    server_response = gzip.GzipFile(fileobj=content).read()
-                    self.collect_email_intelligence(server_response)
-                    return True
-                else:
-                    return False
+                return False
+        else:
+            return False
 
     def collect_email_intelligence(self, server_response):
         soup = BeautifulSoup(server_response, 'html.parser')
