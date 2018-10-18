@@ -7,6 +7,7 @@ OSTrICa - Open Source Threat Intelligence Collector (An Open Source plugin-orien
 - Deepviz plugin removed
 - DomainBigData plugin updated (redirect)
 
+## Info
 **OSTrICa** stands for Open Source Threat Intelligence Collector and is an Open Source **plugin-oriented framework** to **collect and visualize** Threat Intelligence Information. Furthermore, OSTrICa is also the Italian word for oyster: that's where the logo come from.
 
 SOC analysts, incident responders, attack investigators or cyber-security analysts need to correlate IoCs (Indicator of Compromise), network traffic patterns and any other collected data in order to get a real advantage against cyber-enemies. 
