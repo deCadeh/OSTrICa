@@ -1,0 +1,168 @@
+{
+    "intelligence": {
+        "extraction_type": "domain_information",
+        "intelligence_information": {
+            "A": [
+                [
+                    "A",
+                    "gsec.in",
+                    "72.52.4.119",
+                    "300",
+                    "IN"
+                ]
+            ],
+            "MX": [
+                [
+                    "MX",
+                    "gsec.in",
+                    "localhost",
+                    "0",
+                    "3600",
+                    "IN"
+                ]
+            ],
+            "email": "op13(at)mail.com",
+            "organization": "N/a",
+            "other_tdls": [
+                "gsec.ar",
+                "gsec.at",
+                "gsec.biz",
+                "gsec.ca",
+                "gsec.ch",
+                "gsec.cn",
+                "gsec.com",
+                "gsec.co",
+                "gsec.com.co",
+                "gsec.coop",
+                "gsec.de",
+                "gsec.com.cn",
+                "gsec.dk",
+                "gsec.cz",
+                "gsec.net",
+                "gsec.org",
+                "gsec.us",
+                "gsec.info",
+                "gsec.ru",
+                "gsec.uk",
+                "gsec.fr",
+                "gsec.it",
+                "gsec.jp",
+                "gsec.se",
+                "gsec.gov.cn",
+                "gsec.za",
+                "gsec.ro",
+                "gsec.hu",
+                "gsec.ua"
+            ],
+            "registrant_city": "amman",
+            "registrant_country": " Jordan",
+            "registrant_name": "Hadi Mazeh",
+            "registrant_phone": "+962.45667547"
+        }
+    },
+    "plugin_name": "DomainBigData",
+    "requested_intel": "gsec.in",
+    "requested_intel_type": "domain_information"
+}{
+    "intelligence": {
+        "extraction_type": "domain_information",
+        "intelligence_information": {
+            "safeweb": "UNTESTED"
+        }
+    },
+    "plugin_name": "NortonSafeWeb",
+    "requested_intel": "gsec.in",
+    "requested_intel_type": "domain_information"
+}{
+    "intelligence": {
+        "extraction_type": "domain_information",
+        "intelligence_information": {
+            "emails": [
+                "",
+                "yoname@163.com"
+            ],
+            "md5s": [],
+            "resolutions": [
+                {
+                    "ip_address": "72.52.4.120",
+                    "last_resolved": "2018-03-12"
+                }
+            ]
+        }
+    },
+    "plugin_name": "ThreatCrowd",
+    "requested_intel": "gsec.in",
+    "requested_intel_type": "domain_information"
+}{
+    "intelligence": {
+        "extraction_type": "domain_information",
+        "intelligence_information": {
+            "as": "",
+            "asn": 0,
+            "detected_domains": [
+                [
+                    "5/70",
+                    "2018-08-17 08:42:38",
+                    "http://gsec.in/"
+                ],
+                [
+                    "1/66",
+                    "2018-01-22 04:32:49",
+                    "https://gsec.in/"
+                ]
+            ],
+            "detected_ips": [],
+            "domains_associated_to_ip": [],
+            "ips_associated_to_domain": [
+                [
+                    "2018-10-18",
+                    "72.52.4.119"
+                ],
+                [
+                    "2018-06-26",
+                    "72.52.4.120"
+                ],
+                [
+                    "2016-01-17",
+                    "111.90.133.200"
+                ]
+            ]
+        }
+    },
+    "plugin_name": "VT",
+    "requested_intel": "gsec.in",
+    "requested_intel_type": "domain_information"
+}{
+    "intelligence": {
+        "extraction_type": "domain_information",
+        "intelligence_information": {
+            "associated_urls": []
+        }
+    },
+    "plugin_name": "SpyOnWeb",
+    "requested_intel": "gsec.in",
+    "requested_intel_type": "domain_information"
+}{
+    "intelligence": {
+        "extraction_type": "domain_information",
+        "intelligence_information": {}
+    },
+    "plugin_name": "ThreatMiner",
+    "requested_intel": "gsec.in",
+    "requested_intel_type": "domain_information"
+}{
+    "intelligence": null,
+    "plugin_name": "TCPIPutils",
+    "requested_intel": "gsec.in",
+    "requested_intel_type": "domain_information"
+}{
+    "intelligence": null,
+    "plugin_name": "BlackLists",
+    "requested_intel": "gsec.in",
+    "requested_intel_type": "domain_information"
+}{
+    "intelligence": null,
+    "plugin_name": "SafeBrowsing",
+    "requested_intel": "gsec.in",
+    "requested_intel_type": "domain_information"
+}

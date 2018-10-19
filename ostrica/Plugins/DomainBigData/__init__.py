@@ -267,10 +267,11 @@ class DomainBigData:
         self.intelligence_list.append(record_list)
 
 
-# THIS HAS TO BE CHANGED
+# APPEARS AS 404
+'''
     def related_domains_information(self, domain):
         query = '/name/%s' % (domain)
-        hhandle = httplib.HTTPConnection(self.host, timeout=cfg.timeout)
+        hhandle = httplib.HTTPSConnection(self.host, timeout=cfg.timeout)
         hhandle.putrequest('GET', query)
         hhandle.putheader('Connection', 'keep-alive')
         hhandle.putheader('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8')
@@ -317,6 +318,8 @@ class DomainBigData:
                 associated_sites.append({'associated_site':associated_site, 'creation_date':creation_date, 'registrar':registrar})
                 continue
         self.intelligence['possible_associated_sites'] = associated_sites
+'''
+
 
 def run(intelligence, extraction_type):
     if cfg.DEBUG:
@@ -329,8 +332,8 @@ def run(intelligence, extraction_type):
             del intel_collector
             return collected_intel
     elif extraction_type == cfg.intelligence_type['domain']:
-        if (intel_collector.related_domains_information(intelligence.replace('www.', '')) == True or
-            intel_collector.domain_information(intelligence.replace('www.', '')) == True):
+        #if intel_collector.related_domains_information(intelligence.replace('www.', '')) == True or
+        if (intel_collector.domain_information(intelligence.replace('www.', '')) == True):
             collected_intel = extracted_information(extraction_type, intel_collector.intelligence)
             del intel_collector
             return collected_intel
