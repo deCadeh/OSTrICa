@@ -43,7 +43,7 @@ class BlackListChecker:
 
     emerging_threats_host = 'rules.emergingthreats.net'
     alienvault_host = 'reputation.alienvault.com'
-    tor_nodes_host =  'torstatus.blutmagie.de'
+    #tor_nodes_host =  'torstatus.blutmagie.de'
     blocklist_de = 'lists.blocklist.de'
     # dragon_research = 'dragonresearchgroup.org' -- DEAD
     # bambenekconsulting = 'osint.bambenekconsulting.com' -- NOTHING
@@ -145,7 +145,7 @@ class BlackListChecker:
 
     def de_blocklist(self):
         query = '/lists/all.txt'
-        hhandle = httplib.HTTPSConnection(self.blocklist_de, timeout=cfg.timeout)
+        hhandle = httplib.HTTPConnection(self.blocklist_de, timeout=cfg.timeout)
         hhandle.putrequest('GET', query)
         hhandle.putheader('Connection', 'keep-alive')
         hhandle.putheader('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8')
