@@ -42,7 +42,7 @@ visual_data = True
 class SafeBrowsing:
 
     def __init__(self):
-        self.safebrowsing_host = 'www.google.com'
+        self.safebrowsing_host = 'transparencyreport.google.com'
         self.intelligence = {}
         self.json_response = ''
         pass
@@ -70,7 +70,7 @@ class SafeBrowsing:
         self.intelligence['safebrowsing'] = self.json_response
 
     def extract_server_info(self, data_to_analyze):
-        query = '/safebrowsing/diagnostic?output=jsonp&site=%s' % (data_to_analyze)
+        query = '/safe-browsing/search/%s' % (data_to_analyze)
         hhandle = httplib.HTTPSConnection(self.safebrowsing_host, timeout=cfg.timeout)
         hhandle.putrequest('GET', query)
         hhandle.putheader('Connection', 'keep-alive')
