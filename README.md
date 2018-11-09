@@ -10,11 +10,11 @@ OSTrICa - Open Source Threat Intelligence Collector (An Open Source plugin-orien
 
 **October 18th, 2018 @ 6:10PM**
 - Removed some unavailable plugins
-- Added functionality to extract information about possible associated individuals from DomainBigData (appears to function correctly so far) via email (will possibly try to merge two separate registrant extraction functions)
+- Added functionality to extract information about possible associated individuals from `DomainBigData` (appears to function correctly so far) via email (will possibly try to merge two separate registrant extraction functions)
 
 **October 18th, 2018 @ 1:40PM**
-- Deepviz plugin removed (unavailable now)
-- DomainBigData plugin updated (redirect)
+- `Deepviz` plugin removed (unavailable now)
+- `DomainBigData` plugin updated (redirect)
 
 ## Info
 **OSTrICa** stands for Open Source Threat Intelligence Collector and is an Open Source **plugin-oriented framework** to **collect and visualize** Threat Intelligence Information. Furthermore, OSTrICa is also the Italian word for oyster: that's where the logo come from.

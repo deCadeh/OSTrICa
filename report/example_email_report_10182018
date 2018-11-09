@@ -1,0 +1,57 @@
+{
+    "intelligence": null,
+    "plugin_name": "WebSiteInformer",
+    "requested_intel": "op13@mail.com",
+    "requested_intel_type": "email_information"
+}{
+    "intelligence": {
+        "extraction_type": "email_information",
+        "intelligence_information": {
+            "associated_persons": [
+                {
+                    "associated_domains": "/nj/kNEvQvnR9RBWtYY5ym505Q",
+                    "registrant_address": "hay el sollom",
+                    "registrant_city": "amman",
+                    "registrant_country": "Jordan",
+                    "registrant_fax": "+962.45667547",
+                    "registrant_name": "Hadi Mazeh",
+                    "registrant_organization": "N/a",
+                    "registrant_private": "no",
+                    "registrant_state": "amman",
+                    "registrant_tel": "+962.45667547"
+                }
+            ],
+            "associated_sites": [
+                {
+                    "associated_site": "gsec.in",
+                    "creation_date": "2014-02-27",
+                    "registrar": "webiq domains solutions pvt. ltd. (r131-afin)"
+                }
+            ]
+        }
+    },
+    "plugin_name": "DomainBigData",
+    "requested_intel": "op13@mail.com",
+    "requested_intel_type": "email_information"
+}{
+    "intelligence": {
+        "extraction_type": "email_information",
+        "intelligence_information": {
+            "domains": [
+                "facebookservices.org",
+                "fbarticles.com"
+            ]
+        }
+    },
+    "plugin_name": "ThreatCrowd",
+    "requested_intel": "op13@mail.com",
+    "requested_intel_type": "email_information"
+}{
+    "intelligence": {
+        "extraction_type": "email_information",
+        "intelligence_information": {}
+    },
+    "plugin_name": "ThreatMiner",
+    "requested_intel": "op13@mail.com",
+    "requested_intel_type": "email_information"
+}
