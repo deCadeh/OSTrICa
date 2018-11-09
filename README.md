@@ -3,6 +3,11 @@ OSTrICa - Open Source Threat Intelligence Collector (An Open Source plugin-orien
 ![OSTrICa Graph]( https://github.com/Ptr32Void/OSTrICa/blob/master/docs/OSTrICaLogo.png "OSTrICa Graph" )
 
 ## Latest Changes
+**November 8th, 2018 @ 8:30PM**
+- Limited support for SecurityTrails added (API key required)
+    -- This is for historical whois searches ONLY (for now)
+- BlackLists plugin edited
+
 **October 18th, 2018 @ 6:10PM**
 - Removed some unavailable plugins
 - Added functionality to extract information about possible associated individuals from DomainBigData (appears to function correctly so far) via email (will possibly try to merge two separate registrant extraction functions)

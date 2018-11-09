@@ -44,7 +44,11 @@ class Config(object):
     intelligence_type['md5'] = 'md5'
     intelligence_type['sha256'] = 'sha256'
     intelligence_type['ip'] = 'ip_information'
+    intelligence_type['history'] = 'history'
     # intelligence_type['person'] = 'person_information'
+
+    # SecurityTrails API key here
+    security_trails_api = ''
 
     threat_crowd_limit = True
     threat_crowd_limit_seconds = 10
